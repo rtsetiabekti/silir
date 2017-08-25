@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -56,6 +57,8 @@ public class SettingsActivity extends AppCompatActivity {
     private TextView phoneNumberValue;
     private TextView dobValue;
     private TextView genderValue;
+    private TextView heightValue;
+    private TextView weightValue;
 
     private Button modifyName;
     private Button modifyEmail;
@@ -64,6 +67,8 @@ public class SettingsActivity extends AppCompatActivity {
     private Button modifyPhoneNumber;
     private Button modifyDob;
     private Button modifyGender;
+    private Button modifyHeight;
+    private Button modifyWeight;
 
     private ProgressDialog progressDialog;
 
@@ -101,6 +106,8 @@ public class SettingsActivity extends AppCompatActivity {
         phoneNumberValue = (TextView) findViewById(R.id.phone_number_value);
         dobValue = (TextView) findViewById(R.id.dob_value);
         genderValue = (TextView) findViewById(R.id.gender_value);
+        heightValue = (TextView) findViewById(R.id.height_value);
+        weightValue = (TextView) findViewById(R.id.weight_value);
 
         modifyName = (Button) findViewById(R.id.modify_name);
         modifyEmail = (Button) findViewById(R.id.modify_email);
@@ -109,6 +116,8 @@ public class SettingsActivity extends AppCompatActivity {
         modifyPhoneNumber = (Button) findViewById(R.id.modify_phone_number);
         modifyDob = (Button) findViewById(R.id.modify_dob);
         modifyGender = (Button) findViewById(R.id.modify_gender);
+        modifyHeight = (Button) findViewById(R.id.modify_height);
+        modifyWeight = (Button) findViewById(R.id.modify_weight);
 
         modifierDialog = new Dialog(this);
         modifierDialog.setContentView(R.layout.common_modifier_dialog);
@@ -602,6 +611,106 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
+        modifyHeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeHeight();
+            }
+
+            private void changeHeight() {
+                show(field1);
+                hide(field2);
+                hide(field3);
+                hide(field4);
+                field1.setHint("Height in cm");
+                field1.setInputType(InputType.TYPE_CLASS_NUMBER);
+                modifierDialog.setTitle("Modify Height");
+                okButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String heightString = field1.getText().toString();
+                        if (heightString.isEmpty()) {
+                            shake(field1);
+                            return;
+                        }
+                        progressDialog.setMessage("updating height...");
+                        progressDialog.setCancelable(false);
+                        databaseReference.child(User.HEIGHT).setValue(Integer.parseInt(heightString))
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        progressDialog.dismiss();
+                                        modifierDialog.dismiss();
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(activity, "Height is successfully updated",
+                                                    Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(activity, "Failed to update height",
+                                                    Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                    }
+                });
+                cancelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        modifierDialog.dismiss();
+                    }
+                });
+                modifierDialog.show();
+            }
+        });
+        modifyWeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeWeight();
+            }
+
+            private void changeWeight() {
+                show(field1);
+                hide(field2);
+                hide(field3);
+                hide(field4);
+                field1.setHint("Weight in kg");
+                field1.setInputType(InputType.TYPE_CLASS_NUMBER);
+                modifierDialog.setTitle("Modify Weight");
+                okButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String weightString = field1.getText().toString();
+                        if (weightString.isEmpty()) {
+                            shake(field1);
+                            return;
+                        }
+                        progressDialog.setMessage("updating Weight...");
+                        progressDialog.setCancelable(false);
+                        databaseReference.child(User.WEIGHT).setValue(Integer.parseInt(weightString))
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        progressDialog.dismiss();
+                                        modifierDialog.dismiss();
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(activity, "Weight is successfully updated",
+                                                    Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(activity, "Failed to update weight",
+                                                    Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                    }
+                });
+                cancelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        modifierDialog.dismiss();
+                    }
+                });
+                modifierDialog.show();
+            }
+        });
     }
 
     private void hide(View view) {
@@ -627,6 +736,8 @@ public class SettingsActivity extends AppCompatActivity {
                 phoneNumberValue.setText(user.getPhoneNumber());
                 dobValue.setText(user.getDob());
                 genderValue.setText(user.getGender());
+                heightValue.setText(String.format("%d cm", user.getHeight()));
+                weightValue.setText(String.format("%d kg", user.getWeight()));
                 progressDialog.dismiss();
             }
 

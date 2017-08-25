@@ -283,7 +283,6 @@
                 android:textColor="@color/white" />
         </RelativeLayout>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
@@ -334,6 +333,103 @@
                 android:textColor="@color/white" />
         </RelativeLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_margin="10dp"
+            android:background="#bebebe" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <net.steamcrafted.materialiconlib.MaterialIconView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/height_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                app:materialIcon="ruler"
+                app:materialIconColor="@color/colorPrimary"
+                app:materialIconSize="50dp" />
+
+            <TextView
+                android:id="@+id/height_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/height_icon"
+                android:text="@string/setting_label_height"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/height_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/height_label"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/height_icon"
+                android:text="height"
+                android:textStyle="italic" />
+
+            <Button
+                android:id="@+id/modify_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/button_modify"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_margin="10dp"
+            android:background="#bebebe" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <net.steamcrafted.materialiconlib.MaterialIconView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/weight_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                app:materialIcon="weight_kilogram"
+                app:materialIconColor="@color/colorPrimary"
+                app:materialIconSize="50dp" />
+
+            <TextView
+                android:id="@+id/weight_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/weight_icon"
+                android:text="@string/setting_label_weight"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/weight_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/weight_label"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/weight_icon"
+                android:text="weight"
+                android:textStyle="italic" />
+
+            <Button
+                android:id="@+id/modify_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/button_modify"
+                android:textColor="@color/white" />
+        </RelativeLayout>
 
     </LinearLayout>
 </ScrollView>

@@ -118,4 +118,6 @@
     <string name="choose_measurement_profile">Choose existing measurement profile:</string>
     <string name="or_create_the_new_one">or create the new one:</string>
     <string name="retrieving_mesurement_profiles">Retrieving measurement profiles...</string>
+    <string name="setting_label_height">Height</string>
+    <string name="setting_label_weight">Weight</string>
 </resources>
