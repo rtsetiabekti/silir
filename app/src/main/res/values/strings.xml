@@ -58,7 +58,7 @@
     <string name="ok_label">OK</string>
     <string name="measurement_profiles_label">measurement\nprofiles</string>
     <string name="current_measurement_label">current\nmeasurement</string>
-    <string name="add_new_measurement_label">add new measurement</string>
+    <string name="add_new_measurement_label">add new\nmeasurement</string>
     <string name="new_profile_label">New Profile</string>
     <string name="edit_profile_label">Edit Profile</string>
     <string name="result_label">Result</string>

@@ -53,17 +53,17 @@ public class HomeFragment extends Fragment {
 
         final Drawable plusButton = MaterialDrawableBuilder.with(getActivity())
                 .setIcon(MaterialDrawableBuilder.IconValue.PLUS_CIRCLE)
-                .setSizeDp(150)
+                .setSizeDp(130)
                 .setColor(getResources().getColor(R.color.colorPrimary))
                 .build();
         final Drawable multipleAccountIcon = MaterialDrawableBuilder.with(getActivity())
                 .setIcon(MaterialDrawableBuilder.IconValue.ACCOUNT_MULTIPLE)
-                .setSizeDp(30)
+                .setSizeDp(40)
                 .setColor(Color.WHITE)
                 .build();
         final Drawable currentMeasurementIcon = MaterialDrawableBuilder.with(getActivity())
                 .setIcon(MaterialDrawableBuilder.IconValue.CHART_HISTOGRAM)
-                .setSizeDp(30)
+                .setSizeDp(40)
                 .setColor(Color.WHITE)
                 .build();
         addMeasurement.setImageDrawable(plusButton);
